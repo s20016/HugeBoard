@@ -10,10 +10,13 @@
 </head>
 <body>
   <header class="mb-4">
-    <%- include('./layouts/navbar') -%> 
+    <%- include('../layouts/navbar') -%> 
   </header>
   <div class="container">
-    <%- include('./layouts/card') %> 
+    <h4>New Category</h4>
+    <form action="/category" method="POST">
+      <%- include('forms') %>
+    </form>
   </div>
 </body>
 </html>

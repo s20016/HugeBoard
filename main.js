@@ -3,36 +3,40 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 
 const categoryRouter = require('./routes/categoryRouter');
+const categoryModel = require('./models/categoryModel');
+
 const port = process.env.PORT || 3000;
 const app = express();
 
 // DB
-// mongoose.connect('')
+mongoose.connect("mongodb://localhost:27017/board", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+  }).then(() => {
+    console.log("DB connected");
+  }).catch(err => {
+    console.log("DB could not connect", err);
+  }
+);
 
-// EJS Engine
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
 // Static Files
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  const category = [{
-    title: 'Category Title 1',
-    createdAt: new Date(),
-    description: 'Cateogory Description'
-  },
-  {
-    title: 'Category Title 2',
-    createdAt: new Date(),
-    description: 'Cateogory Description'
-  }]
-  res.render('category', { categories: category });
+app.get('/', async (req, res) => {
+  const category = await categoryModel.find().sort({ createdAt: 'desc' });
+
+  res.render('category/category', { categories: category });
 })
 
 // Routes
-app.use('/thread', categoryRouter);
+app.use('/category', categoryRouter);
 
 app.listen(port, () => {
   console.log(`Server running at port: ${port}`);
