@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const layouts = require("express-ejs-layouts")
 
 const categoryRouter = require('./routes/categoryRouter');
 const categoryModel = require('./models/categoryModel');
@@ -26,6 +27,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
+app.use(layouts)
 
 app.get('/', async (req, res) => {
   const category = await categoryModel.find().sort({ createdAt: 'desc' });

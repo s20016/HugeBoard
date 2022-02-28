@@ -1,8 +1,4 @@
-<%- include('../layouts/head') %> 
 <body class="d-flex flex-column min-vh-100">
-  <header class="mb-4">
-    <%- include('../layouts/navbar') -%> 
-  </header>
   <div class="container">
     <% categories.forEach(cat => { %>
       <div class="card mb-3">
@@ -23,5 +19,3 @@
     <% }) %> 
   </div>
 </body>
-  <%- include('../layouts/footer') %> 
-</html>
