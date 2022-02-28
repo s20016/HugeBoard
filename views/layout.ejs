@@ -12,13 +12,17 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top mb-4">
     <div class="container p-2">
       <a class="navbar-brand px-2" href="/">
-        <h1>HugeBoard.</h1>
+        <h1>HugeBoard<span class="text-muted">/<%= category.title %></span></h1>
       </a>
     </div>
   </nav>
   <form class="container form-inline mb-3">
     <a href="#" class="btn btn btn-primary float-end mx-2" type="button">Login</a>
-    <a href="/new" class="btn btn btn-secondary float-end" type="button">Add Category</a>
+    <% if (page === 'category') { %> 
+      <a href="/new" class="btn btn btn-secondary float-end" type="button">Add Category</a>
+    <% } else { %> 
+      <a href="/<%= category.slug %>/new" class="btn btn btn-secondary float-end" type="button">Add Thread</a>
+    <% } %> 
   </form>
   <%- body %>
 </body>
