@@ -6,24 +6,9 @@
         <span"><%= thread.description %> </span>
       </p>
     </div>
-    <div class="card mt-4">
-      <div class="card-header">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">最新50件</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">全件表示</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">メッセージ投稿</a>
-          </li>
-        </ul>
-      </div>
+    <div class="card mt-4 py-2">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Message 1</li>
-        <li class="list-group-item">Message 2</li>
-        <li class="list-group-item">Message 3</li>
+        <%= thread.title %> 
       </ul>
     </div>
   </div>

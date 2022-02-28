@@ -4,7 +4,7 @@ const Category = require("../models/categoryModel.js")
 
 module.exports = {
   newCategory: (req, res) => {
-    res.render('category/new', { category: new Category() })
+    res.render('category/newCategory', { category: new Category() })
   },
   viewCategory: async (req, res) => {
     const category = await Category.findOne({ slug: req.params.slug });
@@ -21,7 +21,7 @@ module.exports = {
       res.redirect(`/${category.slug}`)
     } catch (e) {
       console.log(e)
-      res.render('/new', { category: category })
+      res.render('category/newCategory', { category: category })
     }
   },
   deleteCategory: async (req, res) => {
