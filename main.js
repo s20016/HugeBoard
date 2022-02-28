@@ -35,7 +35,7 @@ app.get('/', async (req, res) => {
 })
 
 // Routes
-app.use('/category', categoryRouter);
+app.use('/', categoryRouter);
 
 app.listen(port, () => {
   console.log(`Server running at port: ${port}`);

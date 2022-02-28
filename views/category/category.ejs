@@ -10,8 +10,8 @@
           <p class="card-text">
             <%= cat.description %> 
           </p>
-          <a href="category/new/<%= cat.slug %>" class="btn btn-primary text-decoration-none">Read More</a>
-          <form class="d-inline" action="/category/new/<%= cat.id %>?_method=DELETE" method="POST">
+          <a href="/<%= cat.slug %>" class="btn btn-primary text-decoration-none">Read More</a>
+          <form class="d-inline" action="/<%= cat.slug %>/new/<%= cat.id %>?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-danger">Delete</button>
           </form>
         </div>

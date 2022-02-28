@@ -18,10 +18,10 @@ module.exports = {
     })
     try {
       category = await category.save();
-      res.redirect(`/category/new/${category.slug}`)
+      res.redirect(`/${category.slug}`)
     } catch (e) {
       console.log(e)
-      res.render('category/new', { category: category })
+      res.render('/new', { category: category })
     }
   },
   deleteCategory: async (req, res) => {
