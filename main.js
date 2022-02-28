@@ -25,13 +25,10 @@ mongoose.connect("mongodb://localhost:27017/board", {
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-
-// Static Files
 app.use(express.static('public'));
 
 app.get('/', async (req, res) => {
   const category = await categoryModel.find().sort({ createdAt: 'desc' });
-
   res.render('category/category', { categories: category });
 })
 
