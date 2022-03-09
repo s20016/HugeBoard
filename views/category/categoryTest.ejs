@@ -1,0 +1,15 @@
+<body class="d-flex flex-column min-vh-100">
+  <div class="container">
+    <div class="list-group mb-5">
+      <% category.forEach(item => { %>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start py-4">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= item.catTitle %> </h5>
+            <!-- <small>Updated: 1 day ago</small> -->
+          </div>
+          <p class="mb-1"><%= item.catDescription %> </p>
+        </a>
+      <% }) %> 
+    </div>
+  </div>
+</body>
