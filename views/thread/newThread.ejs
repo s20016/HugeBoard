@@ -1,12 +1,12 @@
 <body class="d-flex flex-column min-vh-100">
   <div class="container">
     <h4>New Thread</h4>
-    <form action="/<%= category.slug %>" method="POST">
+    <form action="/<% category.slug %>/<%= thread.slug %>" method="POST">
       <div class="form-group mb-2">
         <label for="title" class="mb-1">Title</label>
         <input type="text" name="title" id="title" class="form-control" required>
       </div>
-      <a href="/" class="btn btn-sm btn-secondary">Cancel</a>
+      <a href="/<%= category.slug %>" class="btn btn-sm btn-secondary">Cancel</a>
       <button type="submit" class="btn btn-sm btn-primary">Save</button>
     </form>
   </div>

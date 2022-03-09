@@ -9,5 +9,7 @@ router.post('/', categoryControl.postCategory)
 router.delete('/:slug/new/:id', categoryControl.deleteCategory)
 
 router.get('/:slug/new/thread', categoryControl.newThread)
+router.get('/', categoryControl.viewThread)
+router.post('/', categoryControl.postThread)
 
 module.exports = router

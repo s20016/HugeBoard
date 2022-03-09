@@ -19,11 +19,8 @@ module.exports = {
   },
   viewCategory: async (req, res) => {
     const category = await Category.findOne({ slug: req.params.slug });
-    const thread = [
-      { title: 'test thread 1'},
-      { title: 'test thread 2'},
-      { title: 'test thread 3'}
-    ]
+    const thread = await Thread.findOne({ slug: req.params.slug })
+    console.log(category)
     if (category == null) res.redirect('/');
     res.render('thread/thread', {
       category: category,
@@ -52,24 +49,42 @@ module.exports = {
     res.redirect('/');
   },
   newThread: async (req, res) => {
+    const category = await Category.findOne({ slug: req.params.slug });
     res.render('thread/newThread', { 
-      category: new Thread(),
+      category: category,
+      thread: new Thread(),
       page: 'thread'
     })
   },
   viewThread: async (req, res) => {
     const category = await Category.findOne({ slug: req.params.slug });
-    const thread = [
-      { title: 'test thread 1'},
-      { title: 'test thread 2'},
-      { title: 'test thread 3'}
+    const thread = await Thread.findOne({ slug: req.params.slug })
+    const message = [
+      { title: 'test message 1'},
+      { title: 'test message 2'},
+      { title: 'test message 3'}
     ]
-    if (category == null) res.redirect('/');
-    res.render('thread/thread', {
+    res.render('message/message', {
       category: category,
       thread: thread,
-      page: 'thread'
+      message: message,
+      page: ''
     });
+  },
+  postThread: async (req, res) => {
+    let thread = new Thread({
+      title: req.body.title,
+    })
+    try {
+      thread = await thread.save();
+      res.redirect(`/${thread.slug}`)
+    } catch (e) {
+      console.log(e)
+      res.render('thread/newThread', { 
+        thread: thread,
+        page: 'thread'
+      })
+    }
   },
 }
 
